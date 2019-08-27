@@ -32,12 +32,12 @@ def my_generator(path):
     with open(path, 'r') as f:
         while f.readline() != '':
             a = f.readline()
-            mdpass = hashlib.md5(str(a).encode("utf-8")).hexdigest()  # For MD5 hash
-            print(mdpass)
+            yield  hashlib.md5(str(a).encode("utf-8")).hexdigest()  # For MD5 hash
 
 
 if __name__ == '__main__':
     for item in WikipediaLinkIteration('text.txt'):
         pass
 
-    my_generator('text.txt')
+    for i in my_generator('text.txt'):
+        print(i)
